@@ -17,12 +17,12 @@ nav {
   position: fixed;
   top: 0;
   width: 100%;
-  background-color: rgba(0,0,0,0.9);
+  background-color: rgba(0,0,0,0.95);
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 1rem 2rem;
-  z-index: 100;
+  z-index: 1000;
 }
 
 .logo {
@@ -31,11 +31,9 @@ nav {
   color: #00bfff;
 }
 
-/* Desktop */
 .links {
   display: flex;
   gap: 1rem;
-  position: static; /* nicht fixed */
 }
 
 .links a {
@@ -100,31 +98,29 @@ h1,h2 {
 .section.active {
   display: block;
 }
-@media(max-width:768px){
+
+/* Mobile */
+@media (max-width:768px){
   .links {
     position: fixed;
     top: 0;
-    right: -250px;
+    right: -220px; /* versteckt */
     flex-direction: column;
-    background-color: rgba(0,0,0,0.95);
+    background-color: rgba(0,0,0,0.98);
     height: 100%;
     width: 200px;
     padding-top: 4rem;
     gap: 1.5rem;
     transition: right 0.3s ease;
-    z-index: 99;
+    z-index: 1001;
   }
   .links.show {
     right: 0;
   }
   .burger {
     display: flex;
-    flex-direction: column;
-    cursor: pointer;
-    gap: 5px;
   }
 }
-
 </style>
 </head>
 <body>
@@ -143,7 +139,6 @@ h1,h2 {
     <div></div>
   </div>
 </nav>
-
 
 <div class="hero" id="hero">
   <div class="overlay"></div>
@@ -192,7 +187,7 @@ burger.addEventListener('click', () => {
   linksMenu.classList.toggle('show');
 });
 
-// Navigation Click
+// Navigation Klick
 navLinks.forEach(link => {
   link.addEventListener('click', e => {
     e.preventDefault();
@@ -210,18 +205,9 @@ navLinks.forEach(link => {
 
     // Mobile Menü schließen
     linksMenu.classList.remove('show');
-
-    // Scroll unter Hero
-    if(window.scrollY < hero.offsetHeight){
-      window.scrollTo({
-        top: hero.offsetHeight,
-        behavior: 'smooth'
-      });
-    }
   });
 });
 </script>
 
 </body>
 </html>
-
