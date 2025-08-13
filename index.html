@@ -31,35 +31,27 @@ nav {
   color: #00bfff;
 }
 
+/* Links immer sichtbar */
 .links {
   display: flex;
   gap: 1rem;
+  overflow-x: auto; /* horizontales Scrollen auf kleinen Bildschirmen */
+  -webkit-overflow-scrolling: touch;
 }
 
 .links a {
   color: white;
   text-decoration: none;
   font-weight: bold;
-  transition: color 0.3s;
+  transition: color 0.3s, background-color 0.3s;
+  white-space: nowrap; /* verhindert Umbruch */
+  padding: 0.3rem 0.5rem;
+  border-radius: 5px;
 }
 
 .links a:hover, .links a.active {
   color: #00bfff;
-}
-
-/* Burger */
-.burger {
-  display: none;
-  flex-direction: column;
-  cursor: pointer;
-  gap: 5px;
-}
-
-.burger div {
-  width: 25px;
-  height: 3px;
-  background-color: white;
-  transition: all 0.3s ease;
+  background-color: rgba(0,191,255,0.1);
 }
 
 /* Hero-Bereich */
@@ -99,26 +91,13 @@ h1,h2 {
   display: block;
 }
 
-/* Mobile */
+/* Mobile Anpassung */
 @media (max-width:768px){
-  .links {
-    position: fixed;
-    top: 0;
-    right: -220px; /* versteckt */
-    flex-direction: column;
-    background-color: rgba(0,0,0,0.98);
-    height: 100%;
-    width: 200px;
-    padding-top: 4rem;
-    gap: 1.5rem;
-    transition: right 0.3s ease;
-    z-index: 1001;
+  nav {
+    padding: 0.8rem 1rem;
   }
-  .links.show {
-    right: 0;
-  }
-  .burger {
-    display: flex;
+  .links a {
+    font-size: 0.9rem;
   }
 }
 </style>
@@ -132,11 +111,6 @@ h1,h2 {
     <a href="#" class="nav-link" data-target="videos">Videos</a>
     <a href="#" class="nav-link" data-target="community">Community</a>
     <a href="#" class="nav-link" data-target="discord">Discord</a>
-  </div>
-  <div class="burger" id="burger">
-    <div></div>
-    <div></div>
-    <div></div>
   </div>
 </nav>
 
@@ -168,8 +142,6 @@ h1,h2 {
 
 <script>
 const hero = document.getElementById('hero');
-const burger = document.getElementById('burger');
-const linksMenu = document.querySelector('.links');
 const navLinks = document.querySelectorAll('.nav-link');
 const sections = document.querySelectorAll('.section');
 
@@ -180,11 +152,6 @@ window.addEventListener('scroll', () => {
   let opacity = 1 - scrollPos / fadePoint;
   if (opacity < 0) opacity = 0;
   hero.style.opacity = opacity;
-});
-
-// Burger Klick
-burger.addEventListener('click', () => {
-  linksMenu.classList.toggle('show');
 });
 
 // Navigation Klick
@@ -202,9 +169,6 @@ navLinks.forEach(link => {
         sec.classList.add('active');
       }
     });
-
-    // Mobile Menü schließen
-    linksMenu.classList.remove('show');
   });
 });
 </script>
