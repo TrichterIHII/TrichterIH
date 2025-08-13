@@ -1,229 +1,222 @@
 <!DOCTYPE html>
 <html lang="de">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Minecraft PvP Website</title>
-  <style>
-    body {
-      margin: 0;
-      font-family: Arial, sans-serif;
-      background-color: #0d0d0d;
-      color: white;
-    }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Minecraft PvP Website</title>
+<style>
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background-color: #0d0d0d;
+  color: white;
+}
 
-    /* Navbar */
-    nav {
-      position: fixed;
-      top: 0;
-      width: 100%;
-      background-color: rgba(13, 13, 13, 0.85);
-      backdrop-filter: blur(6px);
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 1rem 2rem;
-      z-index: 10;
-    }
+/* Navbar */
+nav {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  background-color: rgba(0,0,0,0.9);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 2rem;
+  z-index: 100;
+}
 
-    .logo {
-      font-size: 1.5rem;
-      font-weight: bold;
-      color: #00bfff;
-    }
+.logo {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #00bfff;
+}
 
-    /* Links standardmäßig sichtbar */
-    .links {
-      display: flex;
-      gap: 1rem;
-    }
+.links {
+  display: flex;
+  gap: 1rem;
+}
 
-    .links a {
-      color: white;
-      text-decoration: none;
-      font-weight: bold;
-      transition: color 0.3s;
-    }
+.links a {
+  color: white;
+  text-decoration: none;
+  font-weight: bold;
+  transition: color 0.3s;
+}
 
-    .links a:hover, .links a.active {
-      color: #00bfff;
-    }
+.links a:hover, .links a.active {
+  color: #00bfff;
+}
 
-    /* Burger-Button (mobil) */
-    .burger {
-      display: none;
-      flex-direction: column;
-      cursor: pointer;
-      gap: 5px;
-    }
+/* Burger */
+.burger {
+  display: none;
+  flex-direction: column;
+  cursor: pointer;
+  gap: 5px;
+}
 
-    .burger div {
-      width: 25px;
-      height: 3px;
-      background-color: white;
-      transition: all 0.3s ease;
-    }
+.burger div {
+  width: 25px;
+  height: 3px;
+  background-color: white;
+  transition: all 0.3s ease;
+}
 
-    /* Hero-Bereich */
-    .hero {
-      position: relative;
-      height: 100vh;
-      background-image: url('https://i.imgur.com/MT5sPz7.jpeg');
-      background-size: cover;
-      background-position: center;
-      transition: opacity 0.3s ease;
-    }
+/* Hero-Bereich */
+.hero {
+  position: relative;
+  height: 100vh;
+  background-image: url('https://i.imgur.com/MT5sPz7.jpeg');
+  background-size: cover;
+  background-position: center;
+  transition: opacity 0.3s ease;
+}
 
-    .overlay {
-      position: absolute;
-      bottom: 0;
-      width: 100%;
-      height: 100%;
-      background: linear-gradient(to bottom, rgba(13, 13, 13, 0) 60%, #0d0d0d 100%);
-      pointer-events: none;
-    }
+.overlay {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(to bottom, rgba(13, 13, 13, 0) 60%, #0d0d0d 100%);
+  pointer-events: none;
+}
 
-    /* Hauptinhalt */
-    .content {
-      padding: 2rem;
-      background-color: #0d0d0d;
-    }
+/* Content */
+.content {
+  padding: 2rem;
+  background-color: #0d0d0d;
+}
 
-    h1, h2 {
-      color: #00bfff;
-    }
+h1,h2 {
+  color: #00bfff;
+}
 
-    .section {
-      display: none;
-    }
+.section {
+  display: none;
+}
 
-    .section.active {
-      display: block;
-    }
+.section.active {
+  display: block;
+}
 
-    /* Mobile */
-    @media (max-width: 768px) {
-      .links {
-        display: none; /* auf Mobil standardmäßig versteckt */
-        position: absolute;
-        top: 70px;
-        right: 0;
-        background-color: rgba(13, 13, 13, 0.95);
-        flex-direction: column;
-        width: 200px;
-        padding: 1rem;
-        border-left: 2px solid #00bfff;
-      }
-
-      .links.show {
-        display: flex; /* wird angezeigt, wenn Burger geklickt */
-      }
-
-      .burger {
-        display: flex;
-      }
-    }
-  </style>
+/* Mobile */
+@media (max-width:768px){
+  .links {
+    position: fixed;
+    top: 0;
+    right: -250px; /* versteckt */
+    height: 100%;
+    width: 200px;
+    flex-direction: column;
+    background-color: rgba(0,0,0,0.95);
+    padding-top: 4rem;
+    gap: 1.5rem;
+    transition: right 0.3s ease;
+    z-index: 99;
+  }
+  .links.show {
+    right: 0; /* sichtbar */
+  }
+  .burger {
+    display: flex;
+  }
+}
+</style>
 </head>
 <body>
 
-  <!-- Navbar -->
-  <nav>
-    <div class="logo">PvP Zone</div>
-    <div class="links">
-      <a href="#" class="nav-link active" data-target="home">Home</a>
-      <a href="#" class="nav-link" data-target="videos">Videos</a>
-      <a href="#" class="nav-link" data-target="community">Community</a>
-      <a href="#" class="nav-link" data-target="discord">Discord</a>
-    </div>
-    <div class="burger" id="burger">
-      <div></div>
-      <div></div>
-      <div></div>
-    </div>
-  </nav>
+<nav>
+  <div class="logo">PvP Zone</div>
+  <div class="links">
+    <a href="#" class="nav-link active" data-target="home">Home</a>
+    <a href="#" class="nav-link" data-target="videos">Videos</a>
+    <a href="#" class="nav-link" data-target="community">Community</a>
+    <a href="#" class="nav-link" data-target="discord">Discord</a>
+  </div>
+  <div class="burger" id="burger">
+    <div></div>
+    <div></div>
+    <div></div>
+  </div>
+</nav>
 
-  <!-- Hero -->
-  <div class="hero" id="hero">
-    <div class="overlay"></div>
+<div class="hero" id="hero">
+  <div class="overlay"></div>
+</div>
+
+<div class="content">
+  <div id="home" class="section active">
+    <h1>Willkommen in der PvP Zone</h1>
+    <p>Alles rund um Minecraft PvP, Tipps, Turniere und mehr!</p>
   </div>
 
-  <!-- Inhalt -->
-  <div class="content">
-    <div id="home" class="section active">
-      <h1>Willkommen in der PvP Zone</h1>
-      <p>Hier findest du alles rund um Minecraft PvP, Tipps, Turniere und mehr!</p>
-    </div>
-
-    <div id="videos" class="section">
-      <h2>Neueste Videos</h2>
-      <p>[YouTube-Embeds oder Video-Grid hier einfügen]</p>
-    </div>
-
-    <div id="community" class="section">
-      <h2>Community</h2>
-      <p>Trete unserem Discord bei und chatte mit anderen PvP-Fans!</p>
-    </div>
-
-    <div id="discord" class="section">
-      <h2>Discord</h2>
-      <p>[Discord Widget oder Link hier einfügen]</p>
-    </div>
+  <div id="videos" class="section">
+    <h2>Neueste Videos</h2>
+    <p>[YouTube-Embeds]</p>
   </div>
 
-  <!-- JS -->
-  <script>
-    const hero = document.getElementById('hero');
-    const burger = document.getElementById('burger');
-    const linksMenu = document.querySelector('.links');
-    const navLinks = document.querySelectorAll('.nav-link');
-    const sections = document.querySelectorAll('.section');
+  <div id="community" class="section">
+    <h2>Community</h2>
+    <p>Discord beitreten und chatten!</p>
+  </div>
 
-    // Hero Scroll Effekt
-    window.addEventListener('scroll', () => {
-      const scrollPos = window.scrollY;
-      const fadePoint = 200;
-      let opacity = 1 - scrollPos / fadePoint;
-      if (opacity < 0) opacity = 0;
-      hero.style.opacity = opacity;
+  <div id="discord" class="section">
+    <h2>Discord</h2>
+    <p>[Discord Widget oder Link]</p>
+  </div>
+</div>
+
+<script>
+const hero = document.getElementById('hero');
+const burger = document.getElementById('burger');
+const linksMenu = document.querySelector('.links');
+const navLinks = document.querySelectorAll('.nav-link');
+const sections = document.querySelectorAll('.section');
+
+// Hero Scroll Effekt
+window.addEventListener('scroll', () => {
+  const scrollPos = window.scrollY;
+  const fadePoint = 200;
+  let opacity = 1 - scrollPos / fadePoint;
+  if (opacity < 0) opacity = 0;
+  hero.style.opacity = opacity;
+});
+
+// Burger Klick
+burger.addEventListener('click', () => {
+  linksMenu.classList.toggle('show');
+});
+
+// Navigation Click
+navLinks.forEach(link => {
+  link.addEventListener('click', e => {
+    e.preventDefault();
+    const targetId = link.getAttribute('data-target');
+
+    navLinks.forEach(l => l.classList.remove('active'));
+    link.classList.add('active');
+
+    sections.forEach(sec => {
+      sec.classList.remove('active');
+      if(sec.id === targetId){
+        sec.classList.add('active');
+      }
     });
 
-    // Burger Menü
-    burger.addEventListener('click', () => {
-      linksMenu.classList.toggle('show');
-    });
+    // Mobile Menü schließen
+    linksMenu.classList.remove('show');
 
-    // Navigation Click Handler
-    navLinks.forEach(link => {
-      link.addEventListener('click', e => {
-        e.preventDefault();
-        const targetId = link.getAttribute('data-target');
-
-        // Aktiven Link markieren
-        navLinks.forEach(l => l.classList.remove('active'));
-        link.classList.add('active');
-
-        // Richtige Section anzeigen
-        sections.forEach(sec => {
-          sec.classList.remove('active');
-          if (sec.id === targetId) {
-            sec.classList.add('active');
-          }
-        });
-
-        // Mobile Menü schließen
-        linksMenu.classList.remove('show');
-
-        // Scroll unter Hero
-        if (window.scrollY < hero.offsetHeight) {
-          window.scrollTo({
-            top: hero.offsetHeight,
-            behavior: 'smooth'
-          });
-        }
+    // Scroll unter Hero
+    if(window.scrollY < hero.offsetHeight){
+      window.scrollTo({
+        top: hero.offsetHeight,
+        behavior: 'smooth'
       });
-    });
-  </script>
+    }
+  });
+});
+</script>
 
 </body>
 </html>
+
