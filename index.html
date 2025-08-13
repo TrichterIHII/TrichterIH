@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Minecraft PvP Website</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background-color: #121212;
+      color: white;
+    }
+
+    /* Navbar */
+    nav {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      background-color: rgba(18, 18, 18, 0.8);
+      backdrop-filter: blur(6px);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 2rem;
+      z-index: 10;
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+      margin-left: 1rem;
+      font-weight: bold;
+    }
+
+    nav a:hover {
+      color: #1db954;
+    }
+
+    /* Hero-Bereich */
+    .hero {
+      position: relative;
+      height: 100vh;
+      background-image: url('https://i.imgur.com/MT5sPz7.jpeg'); /* Beispiel-Minecraft-Bild */
+      background-size: cover;
+      background-position: center;
+      transition: opacity 0.3s ease;
+    }
+
+    /* Farbverlauf-Overlay */
+    .overlay {
+      position: absolute;
+      bottom: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(to bottom, rgba(18, 18, 18, 0) 60%, #121212 100%);
+      pointer-events: none;
+    }
+
+    /* Hauptinhalt */
+    .content {
+      padding: 2rem;
+      background-color: #121212;
+    }
+
+    h1, h2 {
+      color: #1db954;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navbar -->
+  <nav>
+    <div class="logo">PvP Zone</div>
+    <div class="links">
+      <a href="#">Home</a>
+      <a href="#">Videos</a>
+      <a href="#">Community</a>
+      <a href="#">Kontakt</a>
+    </div>
+  </nav>
+
+  <!-- Hero-Bereich -->
+  <div class="hero" id="hero">
+    <div class="overlay"></div>
+  </div>
+
+  <!-- Inhalt -->
+  <div class="content">
+    <h1>Willkommen in der PvP Zone</h1>
+    <p>Hier findest du alles rund um Minecraft PvP, Tipps, Turniere und mehr!</p>
+
+    <h2>Neueste Videos</h2>
+    <p>[YouTube-Embed kommt hier]</p>
+
+    <h2>Community</h2>
+    <p>Trete unserem Discord bei, um mit anderen PvP-Fans zu chatten.</p>
+  </div>
+
+  <!-- JS für Scroll-Effekt -->
+  <script>
+    const hero = document.getElementById('hero');
+
+    window.addEventListener('scroll', () => {
+      const scrollPos = window.scrollY;
+      const fadePoint = 200; // Höhe, bei der das Bild ausblendet
+      let opacity = 1 - scrollPos / fadePoint;
+      if (opacity < 0) opacity = 0;
+      hero.style.opacity = opacity;
+    });
+  </script>
+
+</body>
+</html>
