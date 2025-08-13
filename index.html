@@ -19,7 +19,7 @@ nav {
   width: 100%;
   display: flex;
   align-items: center;
-  padding: 1rem 3rem; /* mehr Platz links und rechts */
+  padding: 1rem 0; /* Oben/Unten-Padding */
   z-index: 1000;
   background-color: rgba(0,0,0,0); /* Transparenz dynamisch via JS */
   transition: background-color 0.3s;
@@ -31,14 +31,19 @@ nav {
   font-weight: bold;
   color: #00bfff;
   flex: 0 0 auto;
+  margin-left: 1.5rem; /* Abstand links zur Scrollleiste */
+}
+
+.links-container {
+  flex: 1;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  padding: 0 1.5rem; /* Abstand links/rechts von der Scrollleiste */
 }
 
 .links {
   display: flex;
-  gap: 3rem; /* mehr Abstand zwischen Links */
-  margin-left: auto;
-  overflow-x: auto;
-  -webkit-overflow-scrolling: touch;
+  gap: 3rem; /* Abstand zwischen Links */
 }
 
 .links a {
@@ -47,7 +52,7 @@ nav {
   font-weight: bold;
   transition: color 0.3s, background-color 0.3s;
   white-space: nowrap;
-  padding: 0.3rem 0.7rem; /* mehr Platz */
+  padding: 0.3rem 0.7rem;
   border-radius: 5px;
   flex: 0 0 auto;
 }
@@ -55,6 +60,20 @@ nav {
 .links a:hover, .links a.active {
   color: #00bfff;
   background-color: rgba(0,191,255,0.1);
+}
+
+/* Scrollbar anpassen */
+.links-container::-webkit-scrollbar {
+  height: 6px;
+}
+
+.links-container::-webkit-scrollbar-thumb {
+  background-color: #00bfff;
+  border-radius: 3px;
+}
+
+.links-container::-webkit-scrollbar-track {
+  background-color: rgba(255,255,255,0.05);
 }
 
 /* Hero-Bereich */
@@ -97,7 +116,7 @@ h1,h2 {
 /* Mobile Anpassung */
 @media (max-width:768px){
   nav {
-    padding: 0.8rem 1rem;
+    padding: 0.8rem 0;
   }
   .links a {
     font-size: 0.9rem;
@@ -110,11 +129,13 @@ h1,h2 {
 
 <nav id="navbar">
   <div class="logo">PvP Zone</div>
-  <div class="links">
-    <a href="#" class="nav-link active" data-target="home">Home</a>
-    <a href="#" class="nav-link" data-target="videos">Videos</a>
-    <a href="#" class="nav-link" data-target="community">Community</a>
-    <a href="#" class="nav-link" data-target="discord">Discord</a>
+  <div class="links-container">
+    <div class="links">
+      <a href="#" class="nav-link active" data-target="home">Home</a>
+      <a href="#" class="nav-link" data-target="videos">Videos</a>
+      <a href="#" class="nav-link" data-target="community">Community</a>
+      <a href="#" class="nav-link" data-target="discord">Discord</a>
+    </div>
   </div>
 </nav>
 
@@ -186,4 +207,3 @@ navLinks.forEach(link => {
 
 </body>
 </html>
-
