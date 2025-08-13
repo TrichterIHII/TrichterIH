@@ -8,7 +8,7 @@
     body {
       margin: 0;
       font-family: Arial, sans-serif;
-      background-color: #121212;
+      background-color: #0d0d0d;
       color: white;
     }
 
@@ -17,7 +17,7 @@
       position: fixed;
       top: 0;
       width: 100%;
-      background-color: rgba(18, 18, 18, 0.8);
+      background-color: rgba(13, 13, 13, 0.85);
       backdrop-filter: blur(6px);
       display: flex;
       justify-content: space-between;
@@ -31,17 +31,18 @@
       text-decoration: none;
       margin-left: 1rem;
       font-weight: bold;
+      transition: color 0.3s;
     }
 
-    nav a:hover {
-      color: #1db954;
+    nav a:hover, nav a.active {
+      color: #00bfff;
     }
 
     /* Hero-Bereich */
     .hero {
       position: relative;
       height: 100vh;
-      background-image: url('https://i.imgur.com/MT5sPz7.jpeg'); /* Beispiel-Minecraft-Bild */
+      background-image: url('https://i.imgur.com/MT5sPz7.jpeg'); /* Beispielbild */
       background-size: cover;
       background-position: center;
       transition: opacity 0.3s ease;
@@ -53,22 +54,33 @@
       bottom: 0;
       width: 100%;
       height: 100%;
-      background: linear-gradient(to bottom, rgba(18, 18, 18, 0) 60%, #121212 100%);
+      background: linear-gradient(to bottom, rgba(13, 13, 13, 0) 60%, #0d0d0d 100%);
       pointer-events: none;
     }
 
     /* Hauptinhalt */
     .content {
       padding: 2rem;
-      background-color: #121212;
+      background-color: #0d0d0d;
     }
 
     .logo {
-      background-image: url('logo.png');
+      font-size: 1.5rem;
+      font-weight: bold;
+      color: #00bfff;
     }
 
     h1, h2 {
-      color: #1db954;
+      color: #00bfff;
+    }
+
+    /* Versteckte Sektionen */
+    .section {
+      display: none;
+    }
+
+    .section.active {
+      display: block;
     }
   </style>
 </head>
@@ -76,12 +88,12 @@
 
   <!-- Navbar -->
   <nav>
-    <div class="logo"></div>
+    <div class="logo">PvP Zone</div>
     <div class="links">
-      <a href="#">Home</a>
-      <a href="#">Videos</a>
-      <a href="#">Community</a>
-      <a href="#">Discord</a>
+      <a href="#" class="nav-link active" data-target="home">Home</a>
+      <a href="#" class="nav-link" data-target="videos">Videos</a>
+      <a href="#" class="nav-link" data-target="community">Community</a>
+      <a href="#" class="nav-link" data-target="discord">Discord</a>
     </div>
   </nav>
 
@@ -92,28 +104,69 @@
 
   <!-- Inhalt -->
   <div class="content">
-    <h1>Willkommen in der PvP Zone</h1>
-    <p>Hier findest du alles rund um Minecraft PvP, Tipps, Turniere und mehr!</p>
+    <div id="home" class="section active">
+      <h1>Willkommen in der PvP Zone</h1>
+      <p>Hier findest du alles rund um Minecraft PvP, Tipps, Turniere und mehr!</p>
+    </div>
 
-    <h2>Neueste Videos</h2>
-    <p>[YouTube-Embed kommt hier]</p>
+    <div id="videos" class="section">
+      <h2>Neueste Videos</h2>
+      <p>[YouTube-Embeds oder Video-Grid hier einfügen]</p>
+    </div>
 
-    <h2>Community</h2>
-    <p>Trete unserem Discord bei, um mit anderen PvP-Fans zu chatten.</p>
+    <div id="community" class="section">
+      <h2>Community</h2>
+      <p>Trete unserem Discord bei und chatte mit anderen PvP-Fans!</p>
+    </div>
+
+    <div id="discord" class="section">
+      <h2>Discord</h2>
+      <p>[Discord Widget oder Link hier einfügen]</p>
+    </div>
   </div>
 
-  <!-- JS für Scroll-Effekt -->
+  <!-- JS für Scroll-Effekt & Navigation -->
   <script>
     const hero = document.getElementById('hero');
 
     window.addEventListener('scroll', () => {
       const scrollPos = window.scrollY;
-      const fadePoint = 200; // Höhe, bei der das Bild ausblendet
+      const fadePoint = 200;
       let opacity = 1 - scrollPos / fadePoint;
       if (opacity < 0) opacity = 0;
       hero.style.opacity = opacity;
+    });
+
+    // Navigation Click Handler
+    const navLinks = document.querySelectorAll('.nav-link');
+    const sections = document.querySelectorAll('.section');
+
+    navLinks.forEach(link => {
+      link.addEventListener('click', e => {
+        e.preventDefault();
+        const targetId = link.getAttribute('data-target');
+
+        // Active Link
+        navLinks.forEach(l => l.classList.remove('active'));
+        link.classList.add('active');
+
+        // Section anzeigen
+        sections.forEach(sec => {
+          sec.classList.remove('active');
+          if (sec.id === targetId) {
+            sec.classList.add('active');
+          }
+        });
+
+        // Scroll nach Hero-Ende
+        window.scrollTo({
+          top: hero.offsetHeight,
+          behavior: 'smooth'
+        });
+      });
     });
   </script>
 
 </body>
 </html>
+
