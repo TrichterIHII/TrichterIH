@@ -151,99 +151,75 @@ h1,h2 {
 
 <div id="videos" class="section" style="padding:2rem; background-color:#0d0d0d; color:white; font-family:Arial, sans-serif;">
 
-  <h2 style="text-align:center; color:#00bfff; margin-bottom:2rem;">Neueste Videos</h2>
+  <h2 style="text-align:center; color:#00bfff; margin-bottom:2rem;">Neueste Videos & Live Stream</h2>
 
-  <!-- YouTube Playlist Embed -->
-  <div style="display:flex; flex-wrap:wrap; gap:1rem; justify-content:center; margin-bottom:2rem;">
-    <iframe width="320" height="180"
-            src="https://www.youtube.com/embed/videoseries?list=UUvyannoxeW5mae-4i27yZvw"
-            frameborder="0" allowfullscreen
-            style="border-radius:12px; border:2px solid #00bfff; box-shadow: 0 4px 8px rgba(0,0,0,0.5);">
-    </iframe>
-  </div>
-
-  <!-- Offizieller YouTube Subscribe Button -->
-  <div style="text-align:center; margin-bottom:3rem;">
-    <script src="https://apis.google.com/js/platform.js"></script>
-    <div class="g-ytsubscribe" 
-         data-channelid="UCvyannoxeW5mae-4i27yZvw" 
-         data-layout="full" 
-         data-count="default">
-    </div>
-  </div>
-
-  <!-- Twitch Widget -->
-  <div id="twitch-widget" style="
-    display:flex; 
-    flex-wrap:wrap; 
-    gap:1.5rem; 
-    justify-content:center; 
+  <!-- YouTube Box -->
+  <div style="
     background-color:#111; 
-    padding:1.5rem; 
     border-radius:12px; 
-    box-shadow: 0 6px 15px rgba(0,0,0,0.6);
+    padding:1rem; 
+    margin-bottom:2rem; 
+    box-shadow: 0 6px 12px rgba(0,0,0,0.5);
   ">
-
-    <!-- Live Stream -->
-    <div style="
-      flex:1 1 480px; 
-      max-width:720px; 
-      min-width:300px;
-      background-color:#0a0a0a;
-      border-radius:12px;
-      padding:0.5rem;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.5);
-    ">
-      <h3 style="text-align:center; color:#00bfff; margin-bottom:1rem;">Live auf Twitch</h3>
-      <iframe
-        src="https://player.twitch.tv/?channel=TrichterIH&parent=trichterihii.github.io"
-        style="border-radius:10px; border:none; width:100%; height:405px;"
-        allowfullscreen>
+    <h3 style="color:#00bfff; text-align:center; margin-bottom:1rem;">YouTube Playlist</h3>
+    <div style="display:flex; flex-wrap:wrap; gap:1rem; justify-content:center;">
+      <iframe 
+        src="https://www.youtube.com/embed/videoseries?list=UUvyannoxeW5mae-4i27yZvw"
+        frameborder="0" allowfullscreen
+        style="border-radius:12px; border:2px solid #00bfff; box-shadow: 0 4px 8px rgba(0,0,0,0.5); width:100%; max-width:320px; height:180px;">
       </iframe>
     </div>
-
-    <!-- Follow Button -->
-    <div style="
-      flex:1 1 200px; 
-      min-width:200px; 
-      display:flex; 
-      align-items:center; 
-      justify-content:center;
-    ">
-      <div id="twitch-follow-button"></div>
-
-      <script src="https://embed.twitch.tv/embed/v1.js"></script>
-      <script type="text/javascript">
-        new Twitch.Embed("twitch-follow-button", {
-          width: 220,
-          height: 50,
-          layout: "default",
-          theme: "dark",
-          channel: "TrichterIH"
-        });
-      </script>
+    <div style="text-align:center; margin-top:1rem;">
+      <script src="https://apis.google.com/js/platform.js"></script>
+      <div class="g-ytsubscribe" 
+           data-channelid="UCvyannoxeW5mae-4i27yZvw" 
+           data-layout="full" 
+           data-count="default">
+      </div>
     </div>
-
   </div>
 
-  <!-- Responsive Anpassung für kleine Bildschirme -->
-  <style>
-    @media (max-width: 600px) {
-      #twitch-widget {
-        flex-direction: column;
-      }
-      #twitch-widget iframe {
-        height: 300px !important;
-      }
-      #twitch-widget div[id^="twitch-follow-button"] {
-        margin-top:1rem;
-        margin-bottom:1rem;
-      }
-    }
-  </style>
+  <!-- Twitch Box -->
+  <div style="
+    background-color:#111; 
+    border-radius:12px; 
+    padding:1rem; 
+    box-shadow: 0 6px 12px rgba(0,0,0,0.5);
+  ">
+    <h3 style="color:#00bfff; text-align:center; margin-bottom:1rem;">Live auf Twitch</h3>
+    <div style="display:flex; flex-direction:column; align-items:center; gap:1rem;">
+      <iframe
+        src="https://player.twitch.tv/?channel=TrichterIH&parent=trichterihii.github.io"
+        style="border-radius:10px; border:none; width:100%; max-width:720px; height:360px;"
+        allowfullscreen>
+      </iframe>
+
+      <div style="width:100%; max-width:220px;">
+        <div id="twitch-follow-button"></div>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://embed.twitch.tv/embed/v1.js"></script>
+  <script type="text/javascript">
+    new Twitch.Embed("twitch-follow-button", {
+      width: 220,
+      height: 50,
+      layout: "default",
+      theme: "dark",
+      channel: "TrichterIH"
+    });
+  </script>
 
 </div>
 
+<style>
+  @media (max-width: 600px) {
+    #videos iframe {
+      height: 280px !important;
+    }
+  }
+</style>
 
   <div id="community" class="section">
     <h2>Community</h2>
