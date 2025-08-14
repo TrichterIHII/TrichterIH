@@ -5,6 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>TrichterIH</title>
 <style>
+/* Gleiche Styles wie vorher */
 body {
   margin: 0;
   font-family: Arial, sans-serif;
@@ -12,7 +13,6 @@ body {
   color: white;
 }
 
-/* Navbar */
 nav {
   position: fixed;
   top: 0;
@@ -62,7 +62,6 @@ nav {
   background-color: rgba(0,191,255,0.1);
 }
 
-/* Scrollbar anpassen */
 .links-container::-webkit-scrollbar {
   height: 6px;
 }
@@ -76,7 +75,6 @@ nav {
   background-color: rgba(255,255,255,0.05);
 }
 
-/* Hero-Bereich */
 .hero {
   position: relative;
   height: 100vh;
@@ -95,7 +93,6 @@ nav {
   pointer-events: none;
 }
 
-/* Content */
 .content {
   padding: 2rem;
   background-color: #0d0d0d;
@@ -113,7 +110,6 @@ h1, h2 {
   display: block;
 }
 
-/* Mobile Anpassung */
 @media (max-width:768px){
   nav {
     padding: 0.8rem 0;
@@ -158,55 +154,54 @@ h1, h2 {
   </div>
 
   <!-- VIDEOS -->
-  <div id="videos" class="section" style="padding:2rem; background-color:#0d0d0d; color:white; font-family:Arial, sans-serif;">
-
+  <div id="videos" class="section" style="padding:2rem;">
     <h2 style="text-align:center; color:#00bfff; margin-bottom:2rem;">Neueste Videos & Live Stream</h2>
 
-    <!-- YouTube Box -->
+    <!-- YouTube -->
     <div style="background-color:#111; border-radius:12px; padding:1rem; margin-bottom:2rem; box-shadow: 0 6px 12px rgba(0,0,0,0.5);">
       <h3 style="color:#00bfff; text-align:center; margin-bottom:1rem;">YouTube Playlist</h3>
       <div style="display:flex; flex-wrap:wrap; gap:1rem; justify-content:center;">
         <iframe 
-          src="https://www.youtube.com/embed/videoseries?list=UUvyannoxeW5mae-4i27yZvw"
+          data-src="https://www.youtube.com/embed/videoseries?list=UUvyannoxeW5mae-4i27yZvw"
           frameborder="0" allowfullscreen
           style="border-radius:12px; border:2px solid #00bfff; box-shadow: 0 4px 8px rgba(0,0,0,0.5); width:100%; max-width:320px; height:180px;">
         </iframe>
       </div>
       <div style="text-align:center; margin-top:1rem;">
-        <script src="https://apis.google.com/js/platform.js"></script>
-        <div class="g-ytsubscribe" 
-             data-channelid="UCvyannoxeW5mae-4i27yZvw" 
-             data-layout="full" 
-             data-count="default">
-        </div>
+        <script src="https://apis.google.com/js/platform.js" async defer></script>
+        <div class="g-ytsubscribe" data-channelid="UCvyannoxeW5mae-4i27yZvw" data-layout="full" data-count="default"></div>
       </div>
     </div>
 
-    <!-- Twitch Box -->
+    <!-- Twitch -->
     <div style="background-color:#111; border-radius:12px; padding:1rem; margin-top:2rem; box-shadow: 0 6px 12px rgba(0,0,0,0.5);">
       <h3 style="color:#00bfff; text-align:center; margin-bottom:1rem;">Twitch Live Stream</h3>
       <div style="display:flex; justify-content:center;">
         <iframe
-          src="https://player.twitch.tv/?channel=TrichterIH&parent=trichterihii.github.io&autoplay=false"
+          data-src="https://player.twitch.tv/?channel=TrichterIH&parent=trichterihii.github.io&autoplay=false"
           style="border-radius:12px; border:2px solid #00bfff; box-shadow: 0 4px 8px rgba(0,0,0,0.5); width:100%; max-width:720px; height:360px;"
           allowfullscreen>
         </iframe>
       </div>
       <div style="text-align:center; margin-top:1rem;">
         <div id="twitch-follow-button"></div>
-        <script src="https://embed.twitch.tv/embed/v1.js"></script>
-        <script type="text/javascript">
-          new Twitch.Embed("twitch-follow-button", {
-            width: 200,
-            height: 50,
-            layout: "default",
-            theme: "dark",
-            channel: "TrichterIH"
+        <script src="https://embed.twitch.tv/embed/v1.js" async defer></script>
+        <script>
+          document.addEventListener("DOMContentLoaded", () => {
+            if (document.getElementById("videos").classList.contains("active")) {
+              new Twitch.Embed("twitch-follow-button", {
+                width: 200,
+                height: 50,
+                layout: "default",
+                theme: "dark",
+                channel: "TrichterIH"
+              });
+            }
           });
         </script>
       </div>
     </div>
-  </div> <!-- Ende Videos -->
+  </div>
 
   <!-- COMMUNITY -->
   <div id="community" class="section">
@@ -219,7 +214,7 @@ h1, h2 {
     <h2>Discord Server</h2>
     <div class="discord-widget" style="text-align:center; margin-top:1rem;">
       <iframe 
-        src="https://discord.com/widget?id=1090662367311958076&theme=dark" 
+        data-src="https://discord.com/widget?id=1090662367311958076&theme=dark" 
         width="350" 
         height="500" 
         allowtransparency="true" 
@@ -230,7 +225,7 @@ h1, h2 {
     </div>
   </div>
 
-</div> <!-- Ende Content -->
+</div>
 
 <script>
 const hero = document.getElementById('hero');
@@ -238,27 +233,36 @@ const navbar = document.getElementById('navbar');
 const navLinks = document.querySelectorAll('.nav-link');
 const sections = document.querySelectorAll('.section');
 
+// Hero Scroll
 window.addEventListener('scroll', () => {
   const scrollPos = window.scrollY;
   const fadePoint = 200;
   let opacity = 1 - scrollPos / fadePoint;
   if (opacity < 0) opacity = 0;
   hero.style.opacity = opacity;
-
   let navOpacity = Math.min(scrollPos / 300, 0.95);
   navbar.style.backgroundColor = `rgba(0,0,0,${navOpacity})`;
 });
 
+// Navigation + Lazy Loading
 navLinks.forEach(link => {
   link.addEventListener('click', e => {
     e.preventDefault();
     const targetId = link.getAttribute('data-target');
+
     navLinks.forEach(l => l.classList.remove('active'));
     link.classList.add('active');
+
     sections.forEach(sec => {
       sec.classList.remove('active');
-      if(sec.id === targetId){
+      if (sec.id === targetId) {
         sec.classList.add('active');
+        // Lazy load iFrames in diesem Abschnitt
+        sec.querySelectorAll('iframe[data-src]').forEach(iframe => {
+          if (!iframe.src) {
+            iframe.src = iframe.getAttribute('data-src');
+          }
+        });
       }
     });
   });
