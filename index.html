@@ -19,9 +19,9 @@ nav {
   width: 100%;
   display: flex;
   align-items: center;
-  padding: 1rem 0; /* Oben/Unten-Padding */
+  padding: 1rem 0;
   z-index: 1000;
-  background-color: rgba(0,0,0,0); /* Transparenz dynamisch via JS */
+  background-color: rgba(0,0,0,0);
   transition: background-color 0.3s;
   backdrop-filter: blur(6px);
 }
@@ -31,19 +31,19 @@ nav {
   font-weight: bold;
   color: #00bfff;
   flex: 0 0 auto;
-  margin-left: 1.5rem; /* Abstand links zur Scrollleiste */
+  margin-left: 1.5rem;
 }
 
 .links-container {
   flex: 1;
   overflow-x: auto;
   -webkit-overflow-scrolling: touch;
-  padding: 0 1.5rem; /* Abstand links/rechts von der Scrollleiste */
+  padding: 0 1.5rem;
 }
 
 .links {
   display: flex;
-  gap: 3rem; /* Abstand zwischen Links */
+  gap: 3rem;
 }
 
 .links a {
@@ -101,7 +101,7 @@ nav {
   background-color: #0d0d0d;
 }
 
-h1,h2 {
+h1, h2 {
   color: #00bfff;
 }
 
@@ -121,6 +121,12 @@ h1,h2 {
   .links a {
     font-size: 0.9rem;
     padding: 0.3rem 0.5rem;
+  }
+}
+
+@media (max-width: 600px) {
+  iframe[src*="player.twitch.tv"] {
+    height: 280px !important;
   }
 }
 </style>
@@ -144,107 +150,87 @@ h1,h2 {
 </div>
 
 <div class="content">
+
+  <!-- HOME -->
   <div id="home" class="section active">
     <h1>Willkommen</h1>
     <p></p>
   </div>
 
-<div id="videos" class="section" style="padding:2rem; background-color:#0d0d0d; color:white; font-family:Arial, sans-serif;">
+  <!-- VIDEOS -->
+  <div id="videos" class="section" style="padding:2rem; background-color:#0d0d0d; color:white; font-family:Arial, sans-serif;">
 
-  <h2 style="text-align:center; color:#00bfff; margin-bottom:2rem;">Neueste Videos & Live Stream</h2>
+    <h2 style="text-align:center; color:#00bfff; margin-bottom:2rem;">Neueste Videos & Live Stream</h2>
 
-  <!-- YouTube Box -->
-  <div style="
-    background-color:#111; 
-    border-radius:12px; 
-    padding:1rem; 
-    margin-bottom:2rem; 
-    box-shadow: 0 6px 12px rgba(0,0,0,0.5);
-  ">
-    <h3 style="color:#00bfff; text-align:center; margin-bottom:1rem;">YouTube Playlist</h3>
-    <div style="display:flex; flex-wrap:wrap; gap:1rem; justify-content:center;">
-      <iframe 
-        src="https://www.youtube.com/embed/videoseries?list=UUvyannoxeW5mae-4i27yZvw"
-        frameborder="0" allowfullscreen
-        style="border-radius:12px; border:2px solid #00bfff; box-shadow: 0 4px 8px rgba(0,0,0,0.5); width:100%; max-width:320px; height:180px;">
-      </iframe>
-    </div>
-    <div style="text-align:center; margin-top:1rem;">
-      <script src="https://apis.google.com/js/platform.js"></script>
-      <div class="g-ytsubscribe" 
-           data-channelid="UCvyannoxeW5mae-4i27yZvw" 
-           data-layout="full" 
-           data-count="default">
+    <!-- YouTube Box -->
+    <div style="background-color:#111; border-radius:12px; padding:1rem; margin-bottom:2rem; box-shadow: 0 6px 12px rgba(0,0,0,0.5);">
+      <h3 style="color:#00bfff; text-align:center; margin-bottom:1rem;">YouTube Playlist</h3>
+      <div style="display:flex; flex-wrap:wrap; gap:1rem; justify-content:center;">
+        <iframe 
+          src="https://www.youtube.com/embed/videoseries?list=UUvyannoxeW5mae-4i27yZvw"
+          frameborder="0" allowfullscreen
+          style="border-radius:12px; border:2px solid #00bfff; box-shadow: 0 4px 8px rgba(0,0,0,0.5); width:100%; max-width:320px; height:180px;">
+        </iframe>
+      </div>
+      <div style="text-align:center; margin-top:1rem;">
+        <script src="https://apis.google.com/js/platform.js"></script>
+        <div class="g-ytsubscribe" 
+             data-channelid="UCvyannoxeW5mae-4i27yZvw" 
+             data-layout="full" 
+             data-count="default">
+        </div>
       </div>
     </div>
-  </div>
 
-<!-- Twitch Box -->
-<div style="
-  background-color:#111; 
-  border-radius:12px; 
-  padding:1rem; 
-  margin-top:2rem; 
-  box-shadow: 0 6px 12px rgba(0,0,0,0.5);
-">
-  <h3 style="color:#00bfff; text-align:center; margin-bottom:1rem;">Twitch Live Stream</h3>
+    <!-- Twitch Box -->
+    <div style="background-color:#111; border-radius:12px; padding:1rem; margin-top:2rem; box-shadow: 0 6px 12px rgba(0,0,0,0.5);">
+      <h3 style="color:#00bfff; text-align:center; margin-bottom:1rem;">Twitch Live Stream</h3>
+      <div style="display:flex; justify-content:center;">
+        <iframe
+          src="https://player.twitch.tv/?channel=TrichterIH&parent=trichterihii.github.io&autoplay=false"
+          style="border-radius:12px; border:2px solid #00bfff; box-shadow: 0 4px 8px rgba(0,0,0,0.5); width:100%; max-width:720px; height:360px;"
+          allowfullscreen>
+        </iframe>
+      </div>
+      <div style="text-align:center; margin-top:1rem;">
+        <div id="twitch-follow-button"></div>
+        <script src="https://embed.twitch.tv/embed/v1.js"></script>
+        <script type="text/javascript">
+          new Twitch.Embed("twitch-follow-button", {
+            width: 200,
+            height: 50,
+            layout: "default",
+            theme: "dark",
+            channel: "TrichterIH"
+          });
+        </script>
+      </div>
+    </div>
+  </div> <!-- Ende Videos -->
 
-  <!-- Twitch Player -->
-  <div style="display:flex; justify-content:center;">
-    <iframe
-      src="https://player.twitch.tv/?channel=TrichterIH&parent=trichterihii.github.io&autoplay=false"
-      style="border-radius:12px; border:2px solid #00bfff; box-shadow: 0 4px 8px rgba(0,0,0,0.5); width:100%; max-width:720px; height:360px;"
-      allowfullscreen>
-    </iframe>
-  </div>
-
-  <!-- Follow Button -->
-  <div style="text-align:center; margin-top:1rem;">
-    <div id="twitch-follow-button"></div>
-    <script src="https://embed.twitch.tv/embed/v1.js"></script>
-    <script type="text/javascript">
-      new Twitch.Embed("twitch-follow-button", {
-        width: 200,
-        height: 50,
-        layout: "default",
-        theme: "dark",
-        channel: "TrichterIH"
-      });
-    </script>
-  </div>
-</div>
-
-<!-- Mobile Anpassung -->
-<style>
-@media (max-width: 600px) {
-  iframe[src*="player.twitch.tv"] {
-    height: 280px !important;
-  }
-}
-</style>
-
-
+  <!-- COMMUNITY -->
   <div id="community" class="section">
     <h2>Community</h2>
     <p>Discord beitreten und chatten!</p>
   </div>
 
+  <!-- DISCORD -->
   <div id="discord" class="section">
     <h2>Discord Server</h2>
-<div class="discord-widget" style="text-align:center; margin-top:1rem;">
-  <iframe 
-    src="https://discord.com/widget?id=1090662367311958076&theme=dark" 
-    width="350" 
-    height="500" 
-    allowtransparency="true" 
-    frameborder="0" 
-    sandbox="allow-popups allow-popups-to-escape-sandbox allow-same-origin allow-scripts"
-    style="border-radius:10px; border:none;">
-  </iframe>
-</div>
-
+    <div class="discord-widget" style="text-align:center; margin-top:1rem;">
+      <iframe 
+        src="https://discord.com/widget?id=1090662367311958076&theme=dark" 
+        width="350" 
+        height="500" 
+        allowtransparency="true" 
+        frameborder="0" 
+        sandbox="allow-popups allow-popups-to-escape-sandbox allow-same-origin allow-scripts"
+        style="border-radius:10px; border:none;">
+      </iframe>
+    </div>
   </div>
-</div>
+
+</div> <!-- Ende Content -->
 
 <script>
 const hero = document.getElementById('hero');
@@ -252,30 +238,23 @@ const navbar = document.getElementById('navbar');
 const navLinks = document.querySelectorAll('.nav-link');
 const sections = document.querySelectorAll('.section');
 
-// Hero Scroll Effekt
 window.addEventListener('scroll', () => {
   const scrollPos = window.scrollY;
-  
-  // Hero Bild ausblenden
   const fadePoint = 200;
   let opacity = 1 - scrollPos / fadePoint;
   if (opacity < 0) opacity = 0;
   hero.style.opacity = opacity;
-  
-  // Navbar Transparenz dynamisch
-  let navOpacity = Math.min(scrollPos / 300, 0.95); // max 0.95
+
+  let navOpacity = Math.min(scrollPos / 300, 0.95);
   navbar.style.backgroundColor = `rgba(0,0,0,${navOpacity})`;
 });
 
-// Navigation Klick
 navLinks.forEach(link => {
   link.addEventListener('click', e => {
     e.preventDefault();
     const targetId = link.getAttribute('data-target');
-
     navLinks.forEach(l => l.classList.remove('active'));
     link.classList.add('active');
-
     sections.forEach(sec => {
       sec.classList.remove('active');
       if(sec.id === targetId){
@@ -288,3 +267,4 @@ navLinks.forEach(link => {
 
 </body>
 </html>
+
