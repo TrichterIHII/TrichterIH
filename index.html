@@ -171,6 +171,50 @@ h1,h2 {
          data-count="default">
     </div>
   </div>
+  <div id="twitch-widget" style="display:flex; flex-wrap:wrap; gap:1rem; justify-content:center; background-color:#0d0d0d; padding:1rem; border-radius:10px; color:white; font-family:Arial, sans-serif;">
+
+  <!-- Live Stream -->
+  <div style="flex:1 1 480px; max-width:720px; min-width:300px;">
+    <h3 style="text-align:center; color:#00bfff;">Live auf Twitch</h3>
+    <iframe
+      src="https://player.twitch.tv/?channel=TrichterIH&parent=trichterihii.github.io"
+      height="405"
+      width="100%"
+      style="border-radius:10px; border:none;"
+      allowfullscreen>
+    </iframe>
+  </div>
+
+  <!-- Follow Button + Chat -->
+  <div style="flex:1 1 350px; min-width:300px; display:flex; flex-direction:column; gap:1rem;">
+
+    <!-- Follow Button -->
+    <div id="twitch-follow-button" style="text-align:center;"></div>
+
+    <script src="https://embed.twitch.tv/embed/v1.js"></script>
+    <script type="text/javascript">
+      new Twitch.Embed("twitch-follow-button", {
+        width: 200,
+        height: 50,
+        layout: "default",
+        theme: "dark",
+        channel: "TrichterIH"
+      });
+    </script>
+
+    <!-- Chat -->
+    <div>
+      <h3 style="text-align:center; color:#00bfff;">Chat</h3>
+      <iframe
+        src="https://www.twitch.tv/embed/TrichterIH/chat?parent=trichterihii.github.io"
+        height="500"
+        width="100%"
+        style="border-radius:10px; border:none;">
+      </iframe>
+    </div>
+
+  </div>
+</div>
 </div>
 
   <div id="community" class="section">
