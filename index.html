@@ -179,45 +179,45 @@ h1,h2 {
     </div>
   </div>
 
-<!-- Twitch Stream Box -->
+<!-- Twitch Box -->
 <div style="
   background-color:#111; 
   border-radius:12px; 
   padding:1rem; 
-  margin-top:2rem;
+  margin-top:2rem; 
   box-shadow: 0 6px 12px rgba(0,0,0,0.5);
-  display:flex; 
-  flex-direction:column;
-  align-items:center;
-  gap:1rem;
 ">
+  <h3 style="color:#00bfff; text-align:center; margin-bottom:1rem;">Twitch Live Stream</h3>
 
   <!-- Twitch Player -->
-  <iframe
-    src="https://player.twitch.tv/?channel=TrichterIH&parent=trichterihii.github.io&autoplay=false"
-    style="border-radius:10px; border:none; width:100%; max-width:720px; height:360px;"
-    allowfullscreen>
-  </iframe>
+  <div style="display:flex; justify-content:center;">
+    <iframe
+      src="https://player.twitch.tv/?channel=TrichterIH&parent=trichterihii.github.io&autoplay=false"
+      style="border-radius:12px; border:2px solid #00bfff; box-shadow: 0 4px 8px rgba(0,0,0,0.5); width:100%; max-width:720px; height:360px;"
+      allowfullscreen>
+    </iframe>
+  </div>
 
-  <!-- Twitch Follow Button -->
-  <div id="twitch-follow-button"></div>
-  <script src="https://embed.twitch.tv/embed/v1.js"></script>
-  <script type="text/javascript">
-    new Twitch.Embed("twitch-follow-button", {
-      width: 200,
-      height: 50,
-      layout: "default",
-      theme: "dark",
-      channel: "TrichterIH"
-    });
-  </script>
-
+  <!-- Follow Button -->
+  <div style="text-align:center; margin-top:1rem;">
+    <div id="twitch-follow-button"></div>
+    <script src="https://embed.twitch.tv/embed/v1.js"></script>
+    <script type="text/javascript">
+      new Twitch.Embed("twitch-follow-button", {
+        width: 200,
+        height: 50,
+        layout: "default",
+        theme: "dark",
+        channel: "TrichterIH"
+      });
+    </script>
+  </div>
 </div>
 
-<!-- Responsive Anpassung -->
+<!-- Mobile Anpassung -->
 <style>
 @media (max-width: 600px) {
-  div[style*='player.twitch.tv'] iframe {
+  iframe[src*="player.twitch.tv"] {
     height: 280px !important;
   }
 }
