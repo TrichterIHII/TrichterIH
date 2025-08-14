@@ -183,6 +183,50 @@ h1, h2, h3 {
   }
 }
 </style>
+  <style>
+.shop-item {
+  background-color:#111;
+  border:2px solid #00bfff;
+  border-radius:12px;
+  padding:1rem;
+  width:200px;
+  text-align:center;
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+.shop-item img {
+  width:100%;
+  border-radius:8px;
+  margin-bottom:0.5rem;
+}
+.shop-item h3 {
+  margin:0.5rem 0;
+  color:#00bfff;
+}
+.shop-item p {
+  margin:0.3rem 0;
+  color:white;
+}
+.shop-item .price {
+  font-weight:bold;
+}
+.shop-item button.add-to-cart {
+  margin-top:0.5rem;
+  padding:0.5rem 1rem;
+  border:none;
+  border-radius:5px;
+  background:#00bfff;
+  color:white;
+  cursor:pointer;
+  transition: background 0.3s;
+}
+.shop-item button.add-to-cart:hover {
+  background:#009acd;
+}
+.shop-item:hover {
+  transform: translateY(-5px);
+  box-shadow:0 6px 12px rgba(0,191,255,0.4);
+}
+</style>
 </head>
 <body>
 
@@ -283,87 +327,8 @@ h1, h2, h3 {
   </div>
 </div>
 
-<style>
-.shop-item {
-  background-color:#111;
-  border:2px solid #00bfff;
-  border-radius:12px;
-  padding:1rem;
-  width:200px;
-  text-align:center;
-  transition: transform 0.3s, box-shadow 0.3s;
-}
-.shop-item img {
-  width:100%;
-  border-radius:8px;
-  margin-bottom:0.5rem;
-}
-.shop-item h3 {
-  margin:0.5rem 0;
-  color:#00bfff;
-}
-.shop-item p {
-  margin:0.3rem 0;
-  color:white;
-}
-.shop-item .price {
-  font-weight:bold;
-}
-.shop-item button.add-to-cart {
-  margin-top:0.5rem;
-  padding:0.5rem 1rem;
-  border:none;
-  border-radius:5px;
-  background:#00bfff;
-  color:white;
-  cursor:pointer;
-  transition: background 0.3s;
-}
-.shop-item button.add-to-cart:hover {
-  background:#009acd;
-}
-.shop-item:hover {
-  transform: translateY(-5px);
-  box-shadow:0 6px 12px rgba(0,191,255,0.4);
-}
-</style>
 
-<script>
-const cart = [];
-const cartItemsEl = document.getElementById('cart-items');
-const cartTotalEl = document.getElementById('cart-total');
 
-document.querySelectorAll('.add-to-cart').forEach(button => {
-  button.addEventListener('click', () => {
-    const itemEl = button.parentElement;
-    const name = itemEl.querySelector('h3').innerText;
-    const price = parseInt(itemEl.querySelector('.price').innerText.replace('€',''));
-
-    cart.push({name, price});
-    updateCart();
-  });
-});
-
-function updateCart() {
-  cartItemsEl.innerHTML = '';
-  let total = 0;
-  cart.forEach((item, index) => {
-    total += item.price;
-    const li = document.createElement('li');
-    li.innerText = `${item.name} - ${item.price}€`;
-    cartItemsEl.appendChild(li);
-  });
-  cartTotalEl.innerText = `Gesamt: ${total}€`;
-}
-
-document.getElementById('checkout').addEventListener('click', () => {
-  if(cart.length === 0) {
-    alert("Dein Warenkorb ist leer!");
-  } else {
-    alert("Checkout noch nicht implementiert. Dein Gesamt: " + cart.reduce((sum,item)=>sum+item.price,0) + "€");
-  }
-});
-</script>
 
   <!-- DISCORD -->
   <div id="discord" class="section" role="tabpanel" aria-labelledby="discord-tab">
@@ -449,6 +414,41 @@ navLinks.forEach(link => {
   });
 });
 </script>
+<script>
+const cart = [];
+const cartItemsEl = document.getElementById('cart-items');
+const cartTotalEl = document.getElementById('cart-total');
 
+document.querySelectorAll('.add-to-cart').forEach(button => {
+  button.addEventListener('click', () => {
+    const itemEl = button.parentElement;
+    const name = itemEl.querySelector('h3').innerText;
+    const price = parseInt(itemEl.querySelector('.price').innerText.replace('€',''));
+
+    cart.push({name, price});
+    updateCart();
+  });
+});
+
+function updateCart() {
+  cartItemsEl.innerHTML = '';
+  let total = 0;
+  cart.forEach((item, index) => {
+    total += item.price;
+    const li = document.createElement('li');
+    li.innerText = `${item.name} - ${item.price}€`;
+    cartItemsEl.appendChild(li);
+  });
+  cartTotalEl.innerText = `Gesamt: ${total}€`;
+}
+
+document.getElementById('checkout').addEventListener('click', () => {
+  if(cart.length === 0) {
+    alert("Dein Warenkorb ist leer!");
+  } else {
+    alert("Checkout noch nicht implementiert. Dein Gesamt: " + cart.reduce((sum,item)=>sum+item.price,0) + "€");
+  }
+});
+</script>
 </body>
 </html>
