@@ -152,24 +152,23 @@ h1,h2 {
 <div id="videos" class="section">
   <h2>Neueste Videos</h2>
 
-<div style="text-align:center; margin-bottom:1rem;">
-  <a href="https://www.youtube.com/channel/UCvyannoxeW5mae-4i27yZvw?sub_confirmation=1" 
-     target="_blank" 
-     style="background-color:#00bfff; color:white; padding:10px 20px; border-radius:5px; text-decoration:none; font-weight:bold;">
-    Kanal abonnieren
-  </a>
-</div>
-
-  <!-- Automatische Uploads-Playlist einbetten -->
-  <div id="youtube-videos" 
-       style="display:flex; flex-wrap:wrap; gap:1rem; justify-content:center;">
-    <iframe width="300" height="170"
-            src="https://www.youtube.com/embed/videoseries?list=UUvyannoxeW5mae-4i27yZvw"
-            frameborder="0" 
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-            allowfullscreen
+  <!-- YouTube Playlist Embed -->
+  <div style="display:flex; flex-wrap:wrap; gap:1rem; justify-content:center; margin-bottom:1rem;">
+    <iframe width="300" height="170" 
+            src="https://www.youtube.com/embed?listType=user_uploads&list=UCvyannoxeW5mae-4i27yZvw" 
+            frameborder="0" allowfullscreen 
             style="border-radius:8px; border:none;">
     </iframe>
+  </div>
+
+  <!-- Offizieller YouTube Subscribe Button -->
+  <div style="text-align:center; margin-top:1rem;">
+    <script src="https://apis.google.com/js/platform.js"></script>
+    <div class="g-ytsubscribe" 
+         data-channelid="UCvyannoxeW5mae-4i27yZvw" 
+         data-layout="default" 
+         data-count="default">
+    </div>
   </div>
 </div>
 
