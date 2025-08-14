@@ -252,6 +252,45 @@ h1, h2, h3 {
   <div id="home" class="section active" role="tabpanel" aria-labelledby="home-tab">
     <h1>Willkommen</h1>
     <p></p>
+    <!-- Social Icon Buttons -->
+<div id="social-icons" style="text-align:center; margin:2rem 0; display:flex; justify-content:center; gap:1rem;">
+  <a href="https://discord.com/users/1042128889729794158" target="_blank" class="icon-btn discord">
+    <!-- Discord SVG -->
+    <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 245 240"><path fill="currentColor" d="M104.4 106.2c0 7.5-5.9 13.5-13.2 13.5-7.3 0-13.2-6-13.2-13.5 0-7.5 5.9-13.5 13.2-13.5 7.3 0 13.2 6 13.2 13.5zm52.2 0c0 7.5-5.9 13.5-13.2 13.5-7.3 0-13.2-6-13.2-13.5 0-7.5 5.9-13.5 13.2-13.5 7.3 0 13.2 6 13.2 13.5z"/><path fill="currentColor" d="M189.5 20h-134C40.7 20 32 28.7 32 39.5v161c0 10.8 8.7 19.5 19.5 19.5h113.6l-5.3-18.3 12.9 12.1 12.1 11.3 21.5 18.1V39.5c0-10.8-8.7-19.5-19.5-19.5z"/></svg>
+  </a>
+  <a href="https://youtube.com/@trichterihmc?si=wEbTDmPgnwBkCN7J" target="_blank" class="icon-btn youtube">
+    <!-- YouTube SVG -->
+    <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 576 512"><path fill="currentColor" d="M549.655 124.083c-6.281-23.651-24.805-42.177-48.463-48.458C458.296 64 288 64 288 64S117.704 64 74.808 75.625c-23.658 6.281-42.182 24.807-48.463 48.458C16 167.978 16 256 16 256s0 88.022 10.345 131.917c6.281 23.651 24.805 42.177 48.463 48.458C117.704 448 288 448 288 448s170.296 0 213.192-11.625c23.658-6.281 42.182-24.807 48.463-48.458C560 344.022 560 256 560 256s0-88.022-10.345-131.917zM232 334V178l142 78-142 78z"/></svg>
+  </a>
+  <a href="https://twitch.tv/trichterih" target="_blank" class="icon-btn twitch">
+    <!-- Twitch SVG -->
+    <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 240 232"><path fill="currentColor" d="M20 0l-20 52v180h60v40h40l40-40h60l60-60V0H20zm180 132l-44 44h-56l-28 28V176H40V12h160v120zM96 76h20v60H96V76zm56 0h20v60h-20V76z"/></svg>
+  </a>
+</div>
+
+<style>
+.icon-btn {
+  display:inline-flex;
+  justify-content:center;
+  align-items:center;
+  width:50px;
+  height:50px;
+  border-radius:12px;
+  color:white;
+  background-color:#111;
+  transition: all 0.3s;
+}
+.icon-btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 4px 12px rgba(0,191,255,0.5);
+}
+
+/* Plattform-Farben */
+.icon-btn.discord { background-color:#7289da; }
+.icon-btn.youtube { background-color:#ff0000; }
+.icon-btn.twitch { background-color:#9146ff; }
+</style>
+
   </div>
 
   <!-- VIDEOS -->
