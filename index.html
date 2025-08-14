@@ -179,31 +179,32 @@ h1,h2 {
     </div>
   </div>
 
-  <!-- Twitch Box -->
-  <div style="
-    background-color:#111; 
-    border-radius:12px; 
-    padding:1rem; 
-    box-shadow: 0 6px 12px rgba(0,0,0,0.5);
-  ">
-    <h3 style="color:#00bfff; text-align:center; margin-bottom:1rem;">Live auf Twitch</h3>
-    <div style="display:flex; flex-direction:column; align-items:center; gap:1rem;">
-      <iframe
-        src="https://player.twitch.tv/?channel=TrichterIH&parent=trichterihii.github.io"
-        style="border-radius:10px; border:none; width:100%; max-width:720px; height:360px;"
-        allowfullscreen>
-      </iframe>
+<!-- Twitch Stream Box -->
+<div style="
+  background-color:#111; 
+  border-radius:12px; 
+  padding:1rem; 
+  margin-top:2rem;
+  box-shadow: 0 6px 12px rgba(0,0,0,0.5);
+  display:flex; 
+  flex-direction:column;
+  align-items:center;
+  gap:1rem;
+">
 
-      <div style="width:100%; max-width:220px;">
-        <div id="twitch-follow-button"></div>
-      </div>
-    </div>
-  </div>
+  <!-- Twitch Player -->
+  <iframe
+    src="https://player.twitch.tv/?channel=TrichterIH&parent=trichterihii.github.io&autoplay=false"
+    style="border-radius:10px; border:none; width:100%; max-width:720px; height:360px;"
+    allowfullscreen>
+  </iframe>
 
+  <!-- Twitch Follow Button -->
+  <div id="twitch-follow-button"></div>
   <script src="https://embed.twitch.tv/embed/v1.js"></script>
   <script type="text/javascript">
     new Twitch.Embed("twitch-follow-button", {
-      width: 220,
+      width: 200,
       height: 50,
       layout: "default",
       theme: "dark",
@@ -213,13 +214,15 @@ h1,h2 {
 
 </div>
 
+<!-- Responsive Anpassung -->
 <style>
-  @media (max-width: 600px) {
-    #videos iframe {
-      height: 280px !important;
-    }
+@media (max-width: 600px) {
+  div[style*='player.twitch.tv'] iframe {
+    height: 280px !important;
   }
+}
 </style>
+
 
   <div id="community" class="section">
     <h2>Community</h2>
