@@ -171,9 +171,6 @@ h1,h2 {
          data-count="default">
     </div>
   </div>
-  <div id="twitch-widget" style="display:flex; flex-wrap:wrap; gap:1rem; justify-content:center; background-color:#0d0d0d; padding:1rem; border-radius:10px; color:white; font-family:Arial, sans-serif;">
-
-  <!-- Live Stream -->
 <div id="twitch-widget" style="
   display:flex; 
   flex-wrap:wrap; 
@@ -200,17 +197,15 @@ h1,h2 {
     </iframe>
   </div>
 
-  <!-- Follow Button + Chat -->
+  <!-- Follow Button -->
   <div style="
-    flex:1 1 350px; 
-    min-width:300px; 
+    flex:1 1 200px; 
+    min-width:200px; 
     display:flex; 
-    flex-direction:column; 
-    gap:1rem;
+    align-items:center; 
+    justify-content:center;
   ">
-
-    <!-- Follow Button -->
-    <div id="twitch-follow-button" style="text-align:center;"></div>
+    <div id="twitch-follow-button"></div>
 
     <script src="https://embed.twitch.tv/embed/v1.js"></script>
     <script type="text/javascript">
@@ -223,9 +218,10 @@ h1,h2 {
       });
     </script>
   </div>
+
 </div>
 
-<!-- Optional: Zusätzliche Media Query für sehr kleine Geräte -->
+<!-- Optional: Anpassung für kleine Bildschirme -->
 <style>
 @media (max-width: 600px) {
   #twitch-widget {
@@ -237,7 +233,6 @@ h1,h2 {
 }
 </style>
 
-</div>
 </div>
 
   <div id="community" class="section">
