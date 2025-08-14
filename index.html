@@ -253,20 +253,18 @@ h1, h2, h3 {
     <h1>Willkommen</h1>
     <p>So sehe ich aus:</p>
     <!-- SkinView3D Script -->
-    <div style="  
-      background-color:#111;
+
+<script src="https://unpkg.com/skinview3d/bundles/skinview3d.bundle.js"></script>
+
+<!-- Platzhalter für Skin -->
+<div style="text-align:center;">
+  <canvas id="skin_container" width="300" height="400" style="background-color: #111; border-radius: 10px;background-color:#111;
       border:2px solid #00bfff;
       border-radius:12px;
       padding:1rem;
       width:200px;
       text-align:center;
-      transition: transform 0.3s, box-shadow 0.3s;
-    ">
-<script src="https://unpkg.com/skinview3d/bundles/skinview3d.bundle.js"></script>
-
-<!-- Platzhalter für Skin -->
-<div style="text-align:center;">
-  <canvas id="skin_container" width="300" height="400" style="background-color: #111; border-radius: 10px;"></canvas>
+      transition: transform 0.3s, box-shadow 0.3s; "></canvas>
 </div>
 
 <script>
@@ -289,7 +287,6 @@ h1, h2, h3 {
   let control = skinview3d.createOrbitControls(skinViewer);
   control.enableZoom = true;
 </script>
-    </div>
 
     <!-- Social Icon Buttons -->
 <div id="social-icons" style="text-align:center; margin:2rem 0; display:flex; justify-content:center; gap:1rem;">
